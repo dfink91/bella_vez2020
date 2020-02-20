@@ -49,7 +49,8 @@ public class Library {
 	public void calcPossibleScoreAndBooksToSend(int days) {
 		tmpPossibleScore = 0;	
 		sentBooks = new ArrayList<>();
-		for (long iB = 0; iB < qBooks; iB++) {
+		days -= signUpTime;
+		for (long iB = 0; iB < days; iB++) {
 			for (long iBpD = 0; iBpD < qBooksPerDay && iB < qBooks; iBpD++) {
 				Book b = books.get((int)iB);
 				sendBook(b);
