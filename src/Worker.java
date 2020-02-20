@@ -16,7 +16,7 @@ public class Worker {
     public void run() {
 		System.out.println("I'm the workermain.");
 		System.out.println(System.getProperty("user.dir"));
-		String[] files = new String[]{"a_example", "b_read_on", "c_incunabula", "d_though_choices", "e_so_many_books", "f_libraries_of_the_world"};
+		String[] files = new String[]{"a_example", "b_read_on", "c_incunabula", "d_tough_choices", "e_so_many_books", "f_libraries_of_the_world"};
 		int counter = 0;
 		while (counter < files.length) {
 			String file = files[counter];
