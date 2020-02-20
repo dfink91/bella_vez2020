@@ -7,6 +7,7 @@ public class SecondTry {
 		Collections.sort(sendingLibs, new SortByRegistration());
 		for (int iL = 0, cntL = libs.length; iL < cntL && days >= 0; iL++) {
 			Library l = libs[iL];
+			
 			days -= l.signUpTime;
 			System.out.println("time remaining: " + days);
 			if (days > 0 && l.qBooks > 0) {
