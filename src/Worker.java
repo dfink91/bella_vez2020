@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Worker {
 
@@ -67,7 +68,13 @@ public class Worker {
 					
 					
 					ArrayList<Library> sendingLibs = firstTry.calcLibraries(books, libs, days);
-					
+					for(int i = 0; i < libs.length;i++){
+						sendingLibs.add(libs[i]);
+					}
+					Collections.sort(sendingLibs, new SortByWeight()); 
+					for(int i = 0; i < sendingLibs.size();i++){
+						System.out.println(sendingLibs.get(i).bookWeight);
+					}
 					
 					
 					int cnt = sendingLibs.size();
