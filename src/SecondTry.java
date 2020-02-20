@@ -4,7 +4,7 @@ import java.util.Collections;
 public class SecondTry {
 	public static ArrayList<Library> calcLibraries(Book[] books, Library[] libs, int days) {
 		ArrayList<Library> sendingLibs = new ArrayList<>();
-		Collections.sort(sendingLibs, new SortByWeight());
+		Collections.sort(sendingLibs, new SortByRegistration());
 		for (int iL = 0, cntL = libs.length; iL < cntL && days >= 0; iL++) {
 			Library l = libs[iL];
 			days -= l.signUpTime;
