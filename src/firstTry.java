@@ -9,7 +9,10 @@ public class firstTry {
 			System.out.println("time remaining: " + days);
 			if (days > 0) {
 				sendingLibs.add(l);
-				l.sendBook(l.books.get(0));
+				int maxBooks = days * l.qBooksPerDay;
+				for (int iB = 0; iB < maxBooks && iB < l.qBooks; iB++) {
+					l.sendBook(l.books.get(iB));					
+				}
 			}
 		}
 		
