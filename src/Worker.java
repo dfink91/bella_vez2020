@@ -67,10 +67,8 @@ public class Worker {
 					}
 					
 					
-					ArrayList<Library> sendingLibs = firstTry.calcLibraries(books, libs, days);
-					
-					Collections.sort(sendingLibs, new SortByWeight()); 
-										
+					ArrayList<Library> sendingLibs = SecondTry.calcLibraries(books, libs, days);
+															
 					int cnt = sendingLibs.size();
 					pw.println(cnt);
 					for(int i = 0; i < cnt; i++) {
