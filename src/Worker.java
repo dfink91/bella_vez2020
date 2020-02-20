@@ -19,11 +19,11 @@ public class Worker {
 		System.out.println(System.getProperty("user.dir"));
 		String[] files = new String[6];
 		files[0] = "a_example";
-//		files[1] = "b_read_on";
-//		files[2] = "c_incunabula";
-//		files[3] = "d_tough_choices";
-//		files[4] = "e_so_many_books";
-//		files[5] = "f_libraries_of_the_world";
+		files[1] = "b_read_on";
+		files[2] = "c_incunabula";
+		files[3] = "d_tough_choices";
+		files[4] = "e_so_many_books";
+		files[5] = "f_libraries_of_the_world";
 		int counter = 0;
 		while (counter < files.length) {
 			String file = files[counter];
@@ -38,10 +38,10 @@ public class Worker {
 					String[] bits = br.readLine().split(" ");
 					int qB = Integer.parseInt(bits[0]);
 					int qL = Integer.parseInt(bits[1]);
-					int qD = Integer.parseInt(bits[2]);
+					int days = Integer.parseInt(bits[2]);
 					System.out.print(qB + " books; ");
 					System.out.print(qL + " libraries; ");
-					System.out.print(qD + " days");
+					System.out.print(days + " days");
 					
 					Book[] books = new Book[qB];
 					Library[] libs = new Library[qL];
@@ -66,7 +66,10 @@ public class Worker {
 					}
 					
 					
-					ArrayList<Library> sendingLibs = new ArrayList<>();
+					ArrayList<Library> sendingLibs = firstTry.calcLibraries(books, libs, days);
+					
+					
+					
 					int cnt = sendingLibs.size();
 					pw.println(cnt);
 					for(int i = 0; i < cnt; i++) {
@@ -74,7 +77,7 @@ public class Worker {
 						int sizeSentBooks = l.sentBooks.size();
 						pw.println(l.idx + " " + sizeSentBooks);
 						for(int j = 0; j < sizeSentBooks; j++) {
-							pw.print(l.sentBooks.get(j) + (j + 1 < sizeSentBooks ? " " : ""));
+							pw.print(l.sentBooks.get(j).idx + (j + 1 < sizeSentBooks ? " " : ""));
 						}
 						pw.println();
 					}
