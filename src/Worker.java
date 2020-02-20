@@ -42,12 +42,28 @@ public class Worker {
 					System.out.print(qL + " libraries; ");
 					System.out.print(qD + " days");
 					
-					
 					Book[] books = new Book[qB];
+					Library[] libs = new Library[qL];
+					
+					
+					// Read all books
 					bits = br.readLine().split(" ");
 					for(int i = 0; i < qB; i++) {
 						books[i] = new Book(i, Integer.parseInt(bits[i])); 
 					}
+					
+					// Read libraries
+					for(int i = 0; i < qL; i++) {
+						bits = br.readLine().split(" ");
+						int qbpl = Integer.parseInt(bits[0]);
+						libs[i] = new Library(qbpl, Integer.parseInt(bits[1]), Integer.parseInt(bits[2]));
+						bits = br.readLine().split(" ");
+						for(int j = 0; j < qbpl; j++) {
+							libs[i].addBook(books[Integer.parseInt(bits[j])]);
+						}
+					}
+					
+					
 					
 					
 					System.out.println();
