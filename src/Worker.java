@@ -17,8 +17,13 @@ public class Worker {
 		System.out.println("I'm the workermain.");
 		System.out.println(System.getProperty("user.dir"));
 		String[] files = new String[6];
+<<<<<<< HEAD
 		// files[0] = "a_example";
 		// files[1] = "b_read_on";
+=======
+		files[0] = "a_example";
+		files[1] = "b_read_on";
+>>>>>>> 372404871a1fe81f2df4fecd935fc841cf5475c0
 		files[2] = "c_incunabula";
 		files[3] = "d_tough_choices";
 		files[4] = "e_so_many_books";

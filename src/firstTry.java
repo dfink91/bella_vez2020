@@ -34,7 +34,7 @@ public class firstTry {
 				days -= l.signUpTime;
 				if (days > 0) {
 					sendingLibs.add(l);
-					l.books.sort((o1, o2) -> o1.value - o2.value);
+					l.books.sort((o1, o2) -> o2.value - o1.value); // descending
 					for (long iB = 0; iB < l.qBooks; iB++) {
 						for (long iBpD = 0; iBpD < l.qBooksPerDay && iB < l.qBooks; iBpD++) {
 							l.sendBook(l.books.get((int)iB));
