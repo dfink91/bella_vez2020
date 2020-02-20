@@ -16,11 +16,11 @@ public class Worker {
     public void run() {
 		System.out.println("I'm the workermain.");
 		System.out.println(System.getProperty("user.dir"));
-		String[] files = new String[]{"a_example", "b_should_be_easy", "c_no_hurry", "d_metropolis", "e_high_bonus"};
+		String[] files = new String[]{"a_example", "b_read_on", "c_incunabula", "d_though_choices", "e_so_many_books", "f_libraries_of_the_world"};
 		int counter = 0;
 		while (counter < files.length) {
 			String file = files[counter];
-			try (FileReader fr = new FileReader("in" + File.separator + file + ".in");
+			try (FileReader fr = new FileReader("in" + File.separator + file + ".txt");
 				 BufferedReader br = new BufferedReader(fr);
 				 FileWriter fw = new FileWriter("out" + File.separator + file + ".txt");
 				 BufferedWriter bw = new BufferedWriter(fw);
