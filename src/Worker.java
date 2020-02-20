@@ -82,6 +82,8 @@ public class Worker {
 						pw.println();
 					}
 					
+					System.out.println();
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
