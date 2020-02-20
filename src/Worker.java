@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Worker {
 
@@ -66,10 +67,8 @@ public class Worker {
 					}
 					
 					
-					ArrayList<Library> sendingLibs = firstTry.calcLibraries(books, libs, days);
-					
-					
-					
+					ArrayList<Library> sendingLibs = SecondTry.calcLibraries(books, libs, days);
+															
 					int cnt = sendingLibs.size();
 					pw.println(cnt);
 					for(int i = 0; i < cnt; i++) {
