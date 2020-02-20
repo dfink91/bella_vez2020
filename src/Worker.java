@@ -16,26 +16,46 @@ public class Worker {
     public void run() {
 		System.out.println("I'm the workermain.");
 		System.out.println(System.getProperty("user.dir"));
-		String[] files = new String[]{"a_example", "b_read_on", "c_incunabula", "d_tough_choices", "e_so_many_books", "f_libraries_of_the_world"};
+		String[] files = new String[6];
+		files[0] = "a_example";
+//		files[1] = "b_read_on";
+//		files[2] = "c_incunabula";
+//		files[3] = "d_tough_choices";
+//		files[4] = "e_so_many_books";
+//		files[5] = "f_libraries_of_the_world";
 		int counter = 0;
 		while (counter < files.length) {
 			String file = files[counter];
-			try (FileReader fr = new FileReader("in" + File.separator + file + ".txt");
-				 BufferedReader br = new BufferedReader(fr);
-				 FileWriter fw = new FileWriter("out" + File.separator + file + ".txt");
-				 BufferedWriter bw = new BufferedWriter(fw);
-				 PrintWriter pw = new PrintWriter(bw);) 
-			{
-				System.out.println("Parsing file: " + file);
-				String[] bits = br.readLine().split(" ");
-				for (String bit : bits) {
-					System.out.print(bit + " ");
+			if (file != null) {
+				try (FileReader fr = new FileReader("in" + File.separator + file + ".txt");
+					 BufferedReader br = new BufferedReader(fr);
+					 FileWriter fw = new FileWriter("out" + File.separator + file + ".txt");
+					 BufferedWriter bw = new BufferedWriter(fw);
+					 PrintWriter pw = new PrintWriter(bw);) 
+				{
+					System.out.println("Parsing file: " + file);
+					String[] bits = br.readLine().split(" ");
+					int qB = Integer.parseInt(bits[0]);
+					int qL = Integer.parseInt(bits[1]);
+					int qD = Integer.parseInt(bits[2]);
+					System.out.print(qB + " books; ");
+					System.out.print(qL + " libraries; ");
+					System.out.print(qD + " days");
+					
+					
+					Book[] books = new Book[qB];
+					bits = br.readLine().split(" ");
+					for(int i = 0; i < qB; i++) {
+						books[i] = new Book(i, Integer.parseInt(bits[i])); 
+					}
+					
+					
+					System.out.println();
+					
+					
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
-				System.out.println();
-				
-				
-			} catch (Exception e) {
-				e.printStackTrace();
 			}
 			counter++;
 			//break;	
