@@ -11,11 +11,15 @@ public class SecondTry {
 			System.out.println("time remaining: " + days);
 			if (days > 0 && l.qBooks > 0) {
 				sendingLibs.add(l);
-				long maxBooks = days * l.qBooksPerDay;
-				for (int iB = 0; iB < maxBooks && iB < l.qBooks; iB++) {
-					l.sendBook(l.books.get(iB));
+				l.books.sort((o1, o2) -> o2.value - o1.value); // descending
+				for (long iB = 0; iB < l.qBooks; iB++) {
+					for (long iBpD = 0; iBpD < l.qBooksPerDay && iB < l.qBooks; iBpD++) {
+						l.sendBook(l.books.get((int)iB));
+						iB++;
+					}
 				}
 			}
+
 		}
 
 		return sendingLibs;
