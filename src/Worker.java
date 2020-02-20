@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 public class Worker {
 
@@ -57,6 +58,7 @@ public class Worker {
 						bits = br.readLine().split(" ");
 						int qbpl = Integer.parseInt(bits[0]);
 						libs[i] = new Library(qbpl, Integer.parseInt(bits[1]), Integer.parseInt(bits[2]));
+						libs[i].idx = i;
 						bits = br.readLine().split(" ");
 						for(int j = 0; j < qbpl; j++) {
 							libs[i].addBook(books[Integer.parseInt(bits[j])]);
@@ -64,10 +66,18 @@ public class Worker {
 					}
 					
 					
-					
-					
-					System.out.println();
-					
+					ArrayList<Library> sendingLibs = new ArrayList<>();
+					int cnt = sendingLibs.size();
+					pw.println(cnt);
+					for(int i = 0; i < cnt; i++) {
+						Library l = sendingLibs.get(i);
+						int sizeSentBooks = l.sentBooks.size();
+						pw.println(l.idx + " " + sizeSentBooks);
+						for(int j = 0; j < sizeSentBooks; j++) {
+							pw.print(l.sentBooks.get(j) + (j + 1 < sizeSentBooks ? " " : ""));
+						}
+						pw.println();
+					}
 					
 				} catch (Exception e) {
 					e.printStackTrace();
