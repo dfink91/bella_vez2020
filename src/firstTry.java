@@ -1,6 +1,7 @@
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 public class firstTry {
@@ -72,18 +73,20 @@ public class firstTry {
 	 static ArrayList<Library> calcLibraries4(Book[] books, Library[] libs, int days) {
 		ArrayList<Library> sendingLibs = new ArrayList<>();
 		ArrayList<Library> remainingLibs = new ArrayList<>(Arrays.asList(libs));
-		ArrayList<Book> alreadySentBooks = new ArrayList<>();
+		HashSet<Book> alreadySentBooks = new HashSet<>();
 		for(Library l : remainingLibs)
 			l.sortBooks();
 		for(int iL = 0, cntL = remainingLibs.size(); iL < cntL && days >= 0; iL++) {
 			for(Library l : remainingLibs)
-				l.calcPossibleScoreAndBooksToSend(days);
+				l.calcPossibleScoreAndBooksToSend(days, alreadySentBooks);
 			remainingLibs.sort((o1, o2) -> Long.compare(o2.tmpPossibleScore, o1.tmpPossibleScore)); // descending
 			Library l = remainingLibs.get(0);
 			if (l.qBooks > 0) {
 				days -= l.signUpTime;
 				if (days > 0) {
 					sendingLibs.add(l);
+					for(int j = 0; j < l.sentBooks.size(); j++)
+						alreadySentBooks.add(l.sentBooks.get(j));
 					remainingLibs.remove(0);
 				}
 			}

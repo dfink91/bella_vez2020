@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Library {
 
@@ -45,7 +46,7 @@ public class Library {
 	public void sortBooks() {
 		books.sort((o1, o2) -> o2.value - o1.value); // descending
 	}
-	
+
 	public void calcPossibleScoreAndBooksToSend(int days) {
 		tmpPossibleScore = 0;	
 		sentBooks = new ArrayList<>();
@@ -56,6 +57,22 @@ public class Library {
 				sendBook(b);
 				tmpPossibleScore += b.value;
 				iB++;
+			}
+		}
+	}
+
+	public void calcPossibleScoreAndBooksToSend(int days, HashSet<Book> alreadySentBooks) {
+		tmpPossibleScore = 0;	
+		sentBooks = new ArrayList<>();
+		days -= signUpTime;
+		for (int iB = 0; iB < days; iB++) {
+			for (int iBpD = 0; iBpD < qBooksPerDay && iB < qBooks; iBpD++) {
+				Book b = books.get(iB);
+				if (!alreadySentBooks.contains(b)) {
+					sendBook(b);
+					tmpPossibleScore += b.value;
+					iB++;
+				}
 			}
 		}
 	}
