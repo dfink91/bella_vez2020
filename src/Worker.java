@@ -66,8 +66,10 @@ public class Worker {
 					// days);
 
 					// ArrayList<Library> sendingLibs = firstTry.calcLibraries2(books, libs, days);
+					
+					ArrayList<Library> sendingLibs = firstTry.calcLibraries3(books, libs, days);
 
-					ArrayList<Library> sendingLibs = SecondTry.calcLibraries(books, libs, days);
+//					ArrayList<Library> sendingLibs = SecondTry.calcLibraries(books, libs, days);
 
 					int cnt = sendingLibs.size();
 					pw.println(cnt);

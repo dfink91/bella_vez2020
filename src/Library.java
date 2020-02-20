@@ -7,6 +7,8 @@ public class Library {
 
 	public ArrayList<Book> books;
 	public ArrayList<Book> sentBooks;
+	
+	public long tmpPossibleScore;
 
 	public Library(int qBooks, int signUpTime, int qBooksPerDay) {
 		this.qBooks = qBooks;
@@ -40,4 +42,20 @@ public class Library {
 		sentBooks.add(b);
 	}
 
+	public void sortBooks() {
+		books.sort((o1, o2) -> o2.value - o1.value); // descending
+	}
+	
+	public void calcPossibleScoreAndBooksToSend(int days) {
+		tmpPossibleScore = 0;	
+		sentBooks = new ArrayList<>();
+		for (long iB = 0; iB < qBooks; iB++) {
+			for (long iBpD = 0; iBpD < qBooksPerDay && iB < qBooks; iBpD++) {
+				Book b = books.get((int)iB);
+				sendBook(b);
+				tmpPossibleScore += b.value;
+				iB++;
+			}
+		}
+	}
 }

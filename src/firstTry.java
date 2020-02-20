@@ -47,4 +47,26 @@ public class firstTry {
 		
 		return sendingLibs;
 	}
+	
+	public static ArrayList<Library> calcLibraries3(Book[] books, Library[] libs, int days) {
+		ArrayList<Library> sendingLibs = new ArrayList<>();
+		ArrayList<Library> remainingLibs = new ArrayList<>(Arrays.asList(libs));
+		for(Library l : remainingLibs)
+			l.sortBooks();
+		for(int iL = 0, cntL = remainingLibs.size(); iL < cntL && days >= 0; iL++) {
+			for(Library l : remainingLibs)
+				l.calcPossibleScoreAndBooksToSend(days);
+			remainingLibs.sort((o1, o2) -> Long.compare(o2.tmpPossibleScore, o1.tmpPossibleScore)); // descending
+			Library l = remainingLibs.get(0);
+			if (l.qBooks > 0) {
+				days -= l.signUpTime;
+				if (days > 0) {
+					sendingLibs.add(l);
+					remainingLibs.remove(0);
+				}
+			}
+		}
+		
+		return sendingLibs;
+	}
 }
