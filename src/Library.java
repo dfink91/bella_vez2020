@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Library {
 
 	public int idx;
-	public int qBooks, signUpTime, qBooksPerDay, bookWeight;
+	public long qBooks, signUpTime, qBooksPerDay, bookWeight;
 
 	public ArrayList<Book> books;
 	public ArrayList<Book> sentBooks;
@@ -17,7 +17,7 @@ public class Library {
 		sentBooks = new ArrayList<>();
 	}
 
-	public int calcBookWeight() {
+	public long calcBookWeight() {
 		if (bookWeight != -1) {
 			return bookWeight;
 		}

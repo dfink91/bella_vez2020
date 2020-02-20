@@ -7,6 +7,6 @@ class SortByWeight implements Comparator<Library>
     // roll number 
     public int compare(Library a, Library b) 
     { 
-        return b.calcBookWeight() - a.calcBookWeight(); 
+        return (int)Math.signum(b.calcBookWeight() - a.calcBookWeight()); 
     } 
 } 
