@@ -70,10 +70,10 @@ public class firstTry {
 		return sendingLibs;
 	}
 	
-	 static ArrayList<Library> calcLibraries4(Book[] books, Library[] libs, int days) {
+	public static ArrayList<Library> calcLibraries4(Book[] books, Library[] libs, int days) {
 		ArrayList<Library> sendingLibs = new ArrayList<>();
 		ArrayList<Library> remainingLibs = new ArrayList<>(Arrays.asList(libs));
-		HashSet<Book> alreadySentBooks = new HashSet<>();
+		HashSet<Integer> alreadySentBooks = new HashSet<>();
 		for(Library l : remainingLibs)
 			l.sortBooks();
 		for(int iL = 0, cntL = remainingLibs.size(); iL < cntL && days >= 0; iL++) {
@@ -86,12 +86,11 @@ public class firstTry {
 				if (days > 0) {
 					sendingLibs.add(l);
 					for(int j = 0; j < l.sentBooks.size(); j++)
-						alreadySentBooks.add(l.sentBooks.get(j));
+						alreadySentBooks.add(l.sentBooks.get(j).idx);
 					remainingLibs.remove(0);
 				}
 			}
 		}	
 		return sendingLibs;
 	}
-	 
 }
